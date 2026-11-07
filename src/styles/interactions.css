@@ -1,0 +1,150 @@
+/* Umpan balik tombol, termasuk tab, filter, dan tombol dialog. */
+button,
+.button {
+  transition:
+    transform 180ms ease,
+    scale 140ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+button:active:not(:disabled):not([aria-disabled='true']),
+.button:active:not([aria-disabled='true']) {
+  transform: translateY(0);
+  scale: 0.97;
+  box-shadow:
+    0 0 0 4px #6d54e612,
+    0 0 18px #6d54e624;
+}
+
+.work-image:active {
+  scale: 0.99;
+}
+
+/* Transisi kartu tidak mengubah ruang yang ditempatinya pada grid. */
+.price-card,
+.work-card {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.price-card:focus-within,
+.work-card:focus-within {
+  border-color: #b8a8f0;
+  box-shadow: 0 8px 24px #6d54e612;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:hover:not(:disabled):not([aria-disabled='true']),
+  .button:hover:not([aria-disabled='true']) {
+    box-shadow:
+      0 0 0 3px #6d54e60a,
+      0 5px 18px #6d54e61c;
+  }
+
+  .price-card:hover,
+  .work-card:hover {
+    transform: translateY(-5px);
+    border-color: #b8a8f0;
+    box-shadow:
+      0 12px 30px #6d54e617,
+      0 0 0 1px #6d54e608;
+  }
+}
+
+/* Skeleton mengikuti waktu muat gambar, tanpa penundaan buatan. */
+.image-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f4f0f8;
+  line-height: 0;
+}
+
+.image-frame > .skeleton-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition:
+    opacity 240ms ease,
+    transform 350ms ease;
+}
+
+.image-frame[data-status='loaded'] > .skeleton-image {
+  opacity: 1;
+}
+
+.image-frame[data-status='error'] > .skeleton-image {
+  visibility: hidden;
+}
+
+.image-skeleton,
+.image-fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.image-skeleton {
+  overflow: hidden;
+  background: #ebe6f3;
+}
+
+.image-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 20%, #ffffff99 50%, transparent 80%);
+  transform: translateX(-100%);
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+.image-fallback {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.work-preview {
+  max-height: 70vh;
+}
+
+@keyframes skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button,
+  .button,
+  .price-card,
+  .work-card,
+  .image-frame > .skeleton-image {
+    transition: none;
+  }
+
+  button:active:not(:disabled):not([aria-disabled='true']),
+  .button:active:not([aria-disabled='true']),
+  .price-card:hover,
+  .work-card:hover,
+  .work-image:hover img {
+    transform: none;
+    scale: 1;
+  }
+
+  .image-skeleton::after {
+    animation: none;
+    transform: none;
+  }
+}
