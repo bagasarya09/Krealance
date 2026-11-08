@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../layout/Header';
+import TechStack from './TechStack';
 export default function Hero({ menuOpen, setMenuOpen }) {
   return (
     <div className="hero-shell" id="home">
@@ -22,15 +23,7 @@ export default function Hero({ menuOpen, setMenuOpen }) {
               <span>{'→'}</span>
             </a>
           </div>
-          <div className="tech">
-            <p>{'Teknologi modern. Pengerjaan yang matang.'}</p>
-            <div className="tech-logos">
-              <span>{'⚛ React'}</span>
-              <span>{'≋ Tailwind'}</span>
-              <span>{'Canva'}</span>
-              <span>{'Figma'}</span>
-            </div>
-          </div>
+          <TechStack />
         </div>
         <div className="visual" aria-label="Ilustrasi antarmuka produk digital">
           <div className="browser">

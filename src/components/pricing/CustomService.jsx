@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CustomService({ choosePackage }) {
+export default function CustomService({ onConsult }) {
   return (
     <div className="custom-service">
       <div>
@@ -10,16 +10,7 @@ export default function CustomService({ choosePackage }) {
           memberikan estimasi biaya dan waktu pengerjaan sesuai cakupan kebutuhan Anda.
         </p>
       </div>
-      <button
-        className="button primary"
-        onClick={() =>
-          choosePackage({
-            service: 'Konsultasi Khusus',
-            name: 'Fitur / Desain Khusus',
-            price: 0,
-          })
-        }
-      >
+      <button className="button primary" onClick={onConsult}>
         Diskusikan via WhatsApp <span>↗</span>
       </button>
     </div>

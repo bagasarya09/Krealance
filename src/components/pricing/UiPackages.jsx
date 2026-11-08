@@ -6,20 +6,25 @@ export default function UiPackages({ platform, setPlatform, choosePackage }) {
   return (
     <>
       <div className="sub-options" aria-label="Platform UI/UX">
-        {['Website', 'Aplikasi Mobile'].map((p) => (
-          <button key={p} aria-pressed={platform === p} onClick={() => setPlatform(p)}>
-            {p}
+        {Object.keys(uiPackages).map((option) => (
+          <button
+            key={option}
+            aria-pressed={platform === option}
+            onClick={() => setPlatform(option)}
+          >
+            {option}
           </button>
         ))}
       </div>
       <div className="package-grid">
-        {uiPackages.map((packageOption, index) => (
+        {uiPackages[platform].map((packageOption, index) => (
           <PriceCard
             key={platform + packageOption.name}
             group={'UI/UX ' + platform}
             entry={packageOption}
             index={index}
             choosePackage={choosePackage}
+            selection={{ service: 'uiux', type: platform, packageName: packageOption.name }}
           />
         ))}
       </div>

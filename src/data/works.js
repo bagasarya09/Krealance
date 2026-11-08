@@ -11,7 +11,7 @@ export const works = [
     alt: 'company-profile',
     description:
       'Website UMKM Kiyutz Situs web usaha kecil Kiyutz, yang mengedepankan antarmuka modern dan responsif untuk menampilkan produk, menyajikan informasi bisnis, serta membantu pelanggan terhubung dengan merek tersebut.',
-    tags: ['Landing Page', 'E-Commerce'],
+    tags: ['Landing Page', 'E-Commerce', 'UMKM'],
     demo: true,
     url: '',
   },
@@ -36,6 +36,42 @@ export const works = [
     description:
       'Thistory adalah aplikasi untuk membaca dan menulis cerita. Aplikasi ini dirancang sebagai wadah sederhana untuk menyimpan ide, pengalaman, serta berbagai kisah yang ingin Anda tuangkan ke dalam kata-kata.',
     tags: ['Design UI/UX', 'Mobile'],
+    demo: true,
+    url: '',
+  },
+  {
+    id: 'Graphic-Design',
+    title: 'Banner & Poster Kegiatan Mahasiswa',
+    category: 'Design Graphic',
+    image: '/works/portfolio-reference.png',
+    alt: 'landing-page-umkm',
+    description:
+      'Pembuatan desain banner dan poster untuk mendukung kegiatan pengabdian masyarakat mahasiswa, dengan tema keberagaman dan nilai kemanusiaan.',
+    tags: ['Poster', 'Banner', 'Kegiatan Kampus'],
+    demo: true,
+    url: '',
+  },
+  {
+    id: 'Graphic-Design',
+    title: 'Banner & Poster Kegiatan Mahasiswa',
+    category: 'Design Graphic',
+    image: '/works/portfolio-reference.png',
+    alt: 'landing-page-umkm',
+    description:
+      'Pembuatan desain banner dan poster untuk mendukung kegiatan pengabdian masyarakat mahasiswa, dengan tema keberagaman dan nilai kemanusiaan.',
+    tags: ['Poster', 'Banner', 'Kegiatan Kampus'],
+    demo: true,
+    url: '',
+  },
+  {
+    id: 'Graphic-Design',
+    title: 'Banner & Poster Kegiatan Mahasiswa',
+    category: 'Design Graphic',
+    image: '/works/portfolio-reference.png',
+    alt: 'landing-page-umkm',
+    description:
+      'Pembuatan desain banner dan poster untuk mendukung kegiatan pengabdian masyarakat mahasiswa, dengan tema keberagaman dan nilai kemanusiaan.',
+    tags: ['Poster', 'Banner', 'Kegiatan Kampus'],
     demo: true,
     url: '',
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-export default function Footer({ onNavigate }) {
+export default function Footer({ onNavigate, backToTopHref = '#home', onBackToTop = onNavigate }) {
   return (
     <footer className="container">
       <a className="brand" href="#home" onClick={onNavigate}>
@@ -7,7 +7,7 @@ export default function Footer({ onNavigate }) {
         {'Krealance'}
       </a>
       <span>{'Studio Kreatif Digital · Indonesia & Internasional'}</span>
-      <a href="#home" onClick={onNavigate}>
+      <a href={backToTopHref} onClick={onBackToTop}>
         {'Kembali ke atas ↑'}
       </a>
     </footer>

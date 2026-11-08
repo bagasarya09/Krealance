@@ -211,6 +211,7 @@ h1 {
 }
 .tech-logos {
   display: flex;
+  flex-wrap: wrap;
   gap: 23px;
   align-items: center;
   color: #38334c;
@@ -218,8 +219,18 @@ h1 {
   font-size: 18px;
   letter-spacing: -0.5px;
 }
-.tech-logos span:first-child {
-  font-size: 20px;
+.tech-logos > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.tech-logos img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .visual {
   position: relative;
@@ -778,39 +789,6 @@ fieldset {
 legend {
   margin-bottom: 10px;
 }
-.budget-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
-}
-.budget-grid label {
-  margin: 0;
-  cursor: pointer;
-  position: relative;
-}
-.budget-grid input {
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-}
-.budget-grid span {
-  display: block;
-  text-align: center;
-  padding: 10px 2px;
-  background: white;
-  border: 1px solid #e6e2ee;
-  border-radius: 5px;
-  font-size: 9px;
-}
-.budget-grid input:checked + span {
-  background: #ede7ff;
-  border-color: #baa8f7;
-  color: #6544d5;
-}
-.budget-grid input:focus-visible + span {
-  outline: 2px solid var(--purple);
-}
 .form-footer {
   display: flex;
   gap: 18px;
@@ -1102,9 +1080,6 @@ dialog dd {
   }
   .form-row {
     grid-template-columns: 1fr;
-  }
-  .budget-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
   .form-footer {
     align-items: start;
@@ -1561,4 +1536,38 @@ footer {
   float: right;
   border: 0;
   background: transparent;
+}
+
+.form-card {
+  min-width: 0;
+}
+.form-intro {
+  font-size: 12px;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+.form-hint {
+  font-size: 11px;
+  margin-bottom: 14px;
+  color: var(--purple);
+}
+.form-card .form-error {
+  margin-top: 6px;
+  color: #a52847;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.optional-label {
+  color: var(--muted);
+}
+#project-form [aria-invalid='true'] {
+  border-color: #ba3c57;
+}
+#project-form > div,
+#project-form .form-row > div {
+  min-width: 0;
+}
+#project-form select {
+  min-width: 0;
+  max-width: 100%;
 }

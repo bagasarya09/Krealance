@@ -1,16 +1,6 @@
 import React from 'react';
 import ProjectForm from './ProjectForm';
-export default function Contact({
-  clearSelectedPackage,
-  selectedPackage,
-  sendBrief,
-  scopeIndex,
-  setScopeIndex,
-  budget,
-  setBudget,
-  contact,
-  whatsappLink,
-}) {
+export default function Contact({ contact, whatsappLink, form }) {
   return (
     <section className="section contact container" id="estimator">
       <div className="contact-grid">
@@ -50,15 +40,7 @@ export default function Contact({
             <span style={{ marginLeft: 'auto' }}>{'↗'}</span>
           </a>
         </div>
-        <ProjectForm
-          clearSelectedPackage={clearSelectedPackage}
-          selectedPackage={selectedPackage}
-          sendBrief={sendBrief}
-          scopeIndex={scopeIndex}
-          setScopeIndex={setScopeIndex}
-          budget={budget}
-          setBudget={setBudget}
-        />
+        <ProjectForm {...form} />
       </div>
     </section>
   );

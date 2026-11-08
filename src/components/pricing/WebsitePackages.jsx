@@ -1,6 +1,7 @@
 import React from 'react';
 import { websitePackages } from '../../data/packages';
-import PriceCard from './PriceCard';
+import WebsitePriceCard from './WebsitePriceCard';
+import '../../styles/website-pricing.css';
 
 export default function WebsitePackages({ website, setWebsite, choosePackage }) {
   return (
@@ -14,7 +15,7 @@ export default function WebsitePackages({ website, setWebsite, choosePackage }) 
       </div>
       <div className="package-grid">
         {websitePackages[website].map((packageOption, index) => (
-          <PriceCard
+          <WebsitePriceCard
             key={website + packageOption.name}
             group={website}
             entry={packageOption}
@@ -24,11 +25,13 @@ export default function WebsitePackages({ website, setWebsite, choosePackage }) 
         ))}
       </div>
       <div className="package-terms">
-        <strong>Termasuk domain & hosting tahun pertama.</strong>
+        <strong>Ketentuan domain, hosting, dan integrasi.</strong>
         <p>
-          Domain reguler sesuai pilihan dan batas biaya yang disepakati; domain premium dan
-          kapasitas tambahan melalui penawaran. Perpanjangan tahun berikutnya dikenakan biaya sesuai
-          layanan yang dipilih.
+          Domain dan hosting mengikuti manfaat yang tercantum atau diwarisi pada setiap paket. Paket
+          yang mencakup keduanya termasuk domain dan hosting 1 tahun. Pilihan domain reguler, batas
+          biaya, dan kapasitas hosting mengikuti kesepakatan. Domain premium dan kapasitas tambahan
+          melalui penawaran. Perpanjangan tahun berikutnya dikenakan biaya sesuai layanan yang
+          dipilih.
         </p>
         <p>
           Teks dan gambar dari klien. Revisi berupa kumpulan masukan dalam cakupan awal. Integrasi

@@ -1,6 +1,13 @@
 import React from 'react';
 import { money } from '../../utils/currency';
-export default function PriceCard({ group, entry, index, graphic = false, choosePackage }) {
+export default function PriceCard({
+  group,
+  entry,
+  index,
+  graphic = false,
+  choosePackage,
+  selection,
+}) {
   const { name, price, features } = entry;
   const isPopular = index === 1 && !graphic;
 
@@ -24,8 +31,9 @@ export default function PriceCard({ group, entry, index, graphic = false, choose
         ))}
       </ul>
       <button
+        type="button"
         className={'button ' + (isPopular ? 'primary' : 'outline')}
-        onClick={() => choosePackage({ service: group, name, price })}
+        onClick={() => choosePackage(selection ?? { service: group, name })}
       >
         Pilih {graphic ? 'Desain' : 'Paket'} <span>↗</span>
       </button>

@@ -1,0 +1,58 @@
+/* Default layout stays readable when JS, animations, or motion preferences change. */
+.motion-panel {
+  position: relative;
+}
+
+.motion-panel-content {
+  transform-origin: center center;
+}
+
+@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .page.has-overlap {
+    isolation: isolate;
+  }
+
+  .has-overlap .motion-panel--hero {
+    z-index: 1;
+  }
+
+  .has-overlap .motion-panel--services,
+  .has-overlap .motion-panel--portfolio {
+    background: white;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0 -22px 55px #30234d18;
+  }
+
+  .has-overlap .motion-panel--services {
+    z-index: 2;
+  }
+
+  .has-overlap #services {
+    padding-top: 65px;
+    padding-bottom: 80px;
+  }
+
+  .has-overlap .motion-panel--portfolio {
+    z-index: 3;
+    background: #faf9fe;
+  }
+
+  .has-overlap #case-studies {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+
+  .has-overlap > .pricing,
+  .has-overlap > .notice,
+  .has-overlap > .contact,
+  .has-overlap > footer {
+    position: relative;
+    z-index: 4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

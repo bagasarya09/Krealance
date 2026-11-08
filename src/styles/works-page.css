@@ -1,0 +1,29 @@
+.portfolio-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.portfolio-page .works-back {
+  margin-top: 28px;
+}
+
+.portfolio-page .portfolio {
+  padding-top: 28px;
+}
+
+.portfolio-page .center h1 {
+  max-width: none;
+  margin: 16px 0;
+  font-size: clamp(30px, 4vw, 44px);
+}
+
+@media (max-width: 650px) {
+  .portfolio-page .works-back {
+    margin-top: 20px;
+  }
+
+  .portfolio-page .portfolio {
+    padding-top: 20px;
+  }
+}

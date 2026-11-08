@@ -13,6 +13,7 @@ export default function GraphicPackages({ choosePackage }) {
             entry={packageOption}
             graphic
             choosePackage={choosePackage}
+            selection={{ service: 'graphic', type: packageOption.name }}
           />
         ))}
       </div>

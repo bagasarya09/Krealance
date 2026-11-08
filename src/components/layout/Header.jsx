@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Header({ menuOpen, setMenuOpen }) {
+export default function Header({ menuOpen, setMenuOpen, worksPage = false }) {
   return (
     <header className="container">
       <a
@@ -13,13 +13,22 @@ export default function Header({ menuOpen, setMenuOpen }) {
         {'Krealance'}
       </a>
       <nav aria-label="Navigasi utama" className={menuOpen ? 'open' : ''}>
-        <a href="#home" className="active" onClick={() => setMenuOpen(false)}>
+        <a
+          href="#home"
+          className={worksPage ? undefined : 'active'}
+          onClick={() => setMenuOpen(false)}
+        >
           {'Beranda'}
         </a>
         <a href="#services" onClick={() => setMenuOpen(false)}>
           {'Layanan'}
         </a>
-        <a href="#case-studies" onClick={() => setMenuOpen(false)}>
+        <a
+          href={worksPage ? '#/karya' : '#case-studies'}
+          className={worksPage ? 'active' : undefined}
+          aria-current={worksPage ? 'page' : undefined}
+          onClick={() => setMenuOpen(false)}
+        >
           {'Karya Kami'}
         </a>
         <a href="#pricing" onClick={() => setMenuOpen(false)}>
