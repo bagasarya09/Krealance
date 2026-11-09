@@ -15,7 +15,6 @@ export default function usePageMotion(scope) {
       const panels = {
         hero: root.querySelector('.motion-panel--hero'),
         services: root.querySelector('.motion-panel--services'),
-        portfolio: root.querySelector('.motion-panel--portfolio'),
       };
       let disposed = false;
       let refreshTimer;
@@ -82,33 +81,29 @@ export default function usePageMotion(scope) {
 
           if (conditions.desktop) {
             root.classList.add('has-overlap');
-            [
-              ['hero', 'services', 0.94, 0.4, -24],
-              ['services', 'portfolio', 0.96, 0.38, -16],
-            ].forEach(([current, next, scale, opacity, y]) => {
-              const panel = panels[current];
-              gsap
-                .timeline({
-                  scrollTrigger: {
-                    id: `krealance-overlap-${current}`,
-                    trigger: panel,
-                    start: () => `top ${pinOffset(panel)}px`,
-                    endTrigger: panels[next],
-                    end: `top ${PIN_TOP}px`,
-                    pin: true,
-                    pinSpacing: false,
-                    scrub: 0.35,
-                    invalidateOnRefresh: true,
-                  },
-                })
-                .to(panel.querySelector('.motion-panel-content'), {
-                  scale,
-                  opacity,
-                  y,
-                  transformOrigin: 'center center',
-                  ease: 'none',
-                });
-            });
+            // Only Hero stays behind the incoming Services section.
+            const panel = panels.hero;
+            gsap
+              .timeline({
+                scrollTrigger: {
+                  id: 'krealance-overlap-hero',
+                  trigger: panel,
+                  start: () => `top ${pinOffset(panel)}px`,
+                  endTrigger: panels.services,
+                  end: `top ${PIN_TOP}px`,
+                  pin: true,
+                  pinSpacing: false,
+                  scrub: 0.35,
+                  invalidateOnRefresh: true,
+                },
+              })
+              .to(panel.querySelector('.motion-panel-content'), {
+                scale: 0.94,
+                opacity: 0.4,
+                y: -24,
+                transformOrigin: 'center center',
+                ease: 'none',
+              });
           }
 
           function reveal(targets, trigger) {
@@ -150,7 +145,7 @@ export default function usePageMotion(scope) {
       function anchorTop(target) {
         const offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
         if (root.classList.contains('has-overlap')) {
-          for (const key of ['hero', 'services']) {
+          for (const key of ['hero']) {
             if (panels[key].contains(target)) {
               const trigger = ScrollTrigger.getById(`krealance-overlap-${key}`);
               if (trigger) return Math.max(0, trigger.start + pinOffset(panels[key]) - offset);
@@ -205,7 +200,7 @@ export default function usePageMotion(scope) {
           if (targets.some((element) => element.contains(event.target))) tween.progress(1);
         });
         // Keyboard focus must not stay on a pinned control behind the next section.
-        for (const key of ['hero', 'services']) {
+        for (const key of ['hero']) {
           const trigger = ScrollTrigger.getById(`krealance-overlap-${key}`);
           if (
             trigger &&

@@ -95,7 +95,7 @@ Perbandingan tabel dihapus, diganti konsultasi fitur/desain khusus sesuai scope.
 Perilaku animasi mengacu pada `references/Krealance_GSAP_React_Preview.html`, sedangkan konten tetap berasal dari komponen dan data proyek. Referensi tidak diimpor ke bundle dan dikecualikan dari pemformatan. Tidak ada bar progres scroll, toolbar pratinjau, atau tombol pengaturan animasi pada website.
 
 - `src/animations/gsap.js` meregistrasikan `useGSAP`, ScrollTrigger, dan SplitText.
-- `src/hooks/usePageMotion.js` mengatur pembuka Hero dan reveal. Pada desktop mulai 900px, dua wrapper dipin untuk transisi Hero → Layanan → Karya. Isi wrapper yang dianimasikan; Harga dan Kontak tetap mengalir normal. Section tinggi dapat dibaca melalui scroll biasa sebelum mulai dipin.
+- `src/hooks/usePageMotion.js` mengatur pembuka Hero dan reveal. Pada desktop mulai 900px, hanya wrapper Hero dipin saat Layanan naik menutupinya. Isi Hero yang dianimasikan; Layanan, Karya, Harga, dan Kontak mengikuti alur scroll normal tanpa pin atau overlap lanjutan. Section tinggi dapat dibaca melalui scroll biasa sebelum mulai dipin.
 - `src/hooks/useContentMotion.js` memberikan transisi pendek pada pergantian tab harga dan filter karya, tanpa membuat ScrollTrigger baru.
 - `src/hooks/useWorkDialogMotion.js` mengatur animasi dialog gambar, termasuk Escape, klik latar, tombol tutup, dan pengembalian fokus.
 - `src/styles/motion.css` mengatur lapisan dan sudut panel desktop. Hover tombol/kartu tetap dikelola CSS yang sudah ada.

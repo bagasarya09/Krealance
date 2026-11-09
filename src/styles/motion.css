@@ -16,8 +16,7 @@
     z-index: 1;
   }
 
-  .has-overlap .motion-panel--services,
-  .has-overlap .motion-panel--portfolio {
+  .has-overlap .motion-panel--services {
     background: white;
     border-radius: 30px 30px 0 0;
     box-shadow: 0 -22px 55px #30234d18;
@@ -27,18 +26,15 @@
     z-index: 2;
   }
 
+  /* Keep the normal-flow portfolio opaque above the unpinned Hero. */
+  .has-overlap .motion-panel--portfolio {
+    display: flow-root;
+    z-index: 2;
+    background: white;
+  }
+
   .has-overlap #services {
     padding-top: 65px;
-    padding-bottom: 80px;
-  }
-
-  .has-overlap .motion-panel--portfolio {
-    z-index: 3;
-    background: #faf9fe;
-  }
-
-  .has-overlap #case-studies {
-    padding-top: 70px;
     padding-bottom: 80px;
   }
 
