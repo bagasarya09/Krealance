@@ -33,14 +33,7 @@ export default function WorksPage() {
         </div>
         <Portfolio />
       </main>
-      <Footer
-        backToTopHref="#/karya"
-        onBackToTop={(event) => {
-          event.preventDefault();
-          const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          window.scrollTo({ top: 0, behavior: reducedMotion ? 'instant' : 'smooth' });
-        }}
-      />
+      <Footer backToTopHref="#/karya" />
     </div>
   );
 }

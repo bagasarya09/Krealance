@@ -174,7 +174,15 @@ export default function usePageMotion(scope) {
         )
           return;
         const link = event.target.closest('a[href^="#"]');
-        if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+        // The footer owns its scroll; focusing its Hero target here would jump to the top
+        // before React's click handler can start the smooth scroll.
+        if (
+          !link ||
+          link.hasAttribute('data-scroll-to-top') ||
+          link.target === '_blank' ||
+          link.hasAttribute('download')
+        )
+          return;
         const target = document.getElementById(link.hash.slice(1));
         if (!target || !root.contains(target)) return;
         event.preventDefault();

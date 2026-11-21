@@ -115,8 +115,26 @@ button:active:not(:disabled):not([aria-disabled='true']),
   line-height: 1.5;
 }
 
+/* Fit the detail image to the screen while keeping its natural proportions. */
 .work-preview {
-  max-height: 70vh;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.work-preview:not([data-status='loaded']) {
+  width: min(100%, calc(var(--work-preview-max-height, 60vh) * 1.333333));
+}
+
+.work-preview[data-status='loaded'] {
+  aspect-ratio: auto;
+}
+
+.work-preview > .work-full {
+  width: auto;
+  height: auto;
+  max-width: var(--work-preview-max-width, 90vw);
+  max-height: var(--work-preview-max-height, 60vh);
 }
 
 @keyframes skeleton-shimmer {

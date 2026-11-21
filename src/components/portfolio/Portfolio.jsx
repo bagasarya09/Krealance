@@ -4,6 +4,7 @@ import WorkCard from './WorkCard';
 import SkeletonImage from '../common/SkeletonImage';
 import useContentMotion from '../../hooks/useContentMotion';
 import useWorkDialogMotion from '../../hooks/useWorkDialogMotion';
+import useWorkDialogSize from '../../hooks/useWorkDialogSize';
 const PREVIEW_LIMIT = 3;
 
 export default function Portfolio({ preview = false }) {
@@ -14,6 +15,7 @@ export default function Portfolio({ preview = false }) {
   const resultsRef = useRef(null);
   useContentMotion(resultsRef, [category]);
   const closeWork = useWorkDialogMotion(dialog, active);
+  useWorkDialogSize(dialog, active);
   // Keep render keys unique even when entries temporarily share an id in the data file.
   const filtered = works
     .map((work, index) => ({ work, key: `${work.id}-${index}` }))
@@ -117,8 +119,6 @@ export default function Portfolio({ preview = false }) {
               imageClassName="work-full"
               src={active.image}
               alt={active.alt}
-              width="1504"
-              height="1128"
             />
             <p className="work-dialog-caption">{active.description}</p>
           </>

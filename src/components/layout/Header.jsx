@@ -9,7 +9,6 @@ export default function Header({ menuOpen, setMenuOpen, worksPage = false }) {
         aria-label="Beranda Krealance"
         onClick={() => setMenuOpen(false)}
       >
-        <span className="logo"></span>
         {'Krealance'}
       </a>
       <nav aria-label="Navigasi utama" className={menuOpen ? 'open' : ''}>

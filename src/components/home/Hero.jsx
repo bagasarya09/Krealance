@@ -34,7 +34,10 @@ export default function Hero({ menuOpen, setMenuOpen }) {
               <div className="address">{'krealance.studio / ide-berikutnya'}</div>
             </div>
             <div className="mock-nav">
-              <b>{'✧ krealance'}</b>
+              <b>
+                <img className="mock-logo" src="/favicon.webp" alt="" width="20" height="20" />
+                {'krealance'}
+              </b>
               <span className="mock-link">{'Rancang Bangun Luncurkan ↗'}</span>
             </div>
             <div className="mock-body">

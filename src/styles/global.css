@@ -273,7 +273,17 @@ h1 {
   padding: 17px 23px;
 }
 .mock-nav b {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
+}
+.mock-logo {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .mock-link {
   color: #a39cae;
@@ -1454,9 +1464,11 @@ footer {
   width: min(1100px, 94vw);
   max-width: none;
   max-height: 92vh;
+  max-height: 92dvh;
   padding: 0;
+  border: 1px solid #e9e4ef;
   border-radius: 14px;
-  overflow: auto;
+  overflow: hidden;
 }
 .work-dialog-head {
   display: flex;
@@ -1465,10 +1477,14 @@ footer {
   gap: 20px;
   padding: 20px 24px;
   background: white;
-  position: sticky;
-  top: 0;
-  z-index: 1;
   border-bottom: 1px solid #eee8f5;
+}
+.work-dialog-head > div {
+  min-width: 0;
+}
+.work-dialog-head h3,
+.work-dialog-caption {
+  overflow-wrap: anywhere;
 }
 .work-dialog-head h3 {
   font-size: 21px;
@@ -1489,13 +1505,24 @@ footer {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 70vh;
   object-fit: contain;
   background: #f7f6fa;
 }
 .work-dialog-caption {
   font-size: 12px;
   padding: 18px 24px;
+}
+@media (max-width: 650px), (max-height: 500px) {
+  .work-dialog-head {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  .work-dialog-head h3 {
+    font-size: 18px;
+  }
+  .work-dialog-caption {
+    padding: 12px 16px;
+  }
 }
 .work-image:focus-visible {
   outline: 3px solid #6d54e6;
