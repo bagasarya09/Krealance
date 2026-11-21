@@ -22,11 +22,21 @@ export default function usePageMotion(scope) {
       let intro;
       let reveals = [];
 
+      function refreshWhenIdle() {
+        refreshTimer = undefined;
+        if (disposed) return;
+        // A refresh restores scroll positions, which can cancel a native smooth scroll.
+        // Wait until scrolling ends and measure now instead of queuing a delayed refresh.
+        if (ScrollTrigger.isScrolling()) {
+          refreshTimer = window.setTimeout(refreshWhenIdle, 100);
+          return;
+        }
+        ScrollTrigger.refresh();
+      }
+
       function scheduleRefresh() {
         window.clearTimeout(refreshTimer);
-        refreshTimer = window.setTimeout(() => {
-          if (!disposed) ScrollTrigger.refresh(true);
-        }, 100);
+        refreshTimer = window.setTimeout(refreshWhenIdle, 100);
       }
 
       media.add(

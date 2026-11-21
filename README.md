@@ -100,7 +100,7 @@ Perilaku animasi mengacu pada `references/Krealance_GSAP_React_Preview.html`, se
 - `src/hooks/useWorkDialogMotion.js` mengatur animasi dialog gambar, termasuk Escape, klik latar, tombol tutup, dan pengembalian fokus.
 - `src/styles/motion.css` mengatur lapisan dan sudut panel desktop. Hover tombol/kartu tetap dikelola CSS yang sudah ada.
 
-`gsap.matchMedia` menonaktifkan overlap pada layar kecil dan meniadakan animasi besar pada reduced motion. Cleanup menggunakan scope `useGSAP`, `revertOnUpdate`, dan `matchMedia.revert()`. Perubahan ukuran konten, tab/filter, font, dan gambar menjadwalkan refresh pengukuran yang digabung dan ditunda singkat, bukan refresh setiap frame. Anchor memperhitungkan posisi asli section yang dipin.
+`gsap.matchMedia` menonaktifkan overlap pada layar kecil dan meniadakan animasi besar pada reduced motion. Cleanup menggunakan scope `useGSAP`, `revertOnUpdate`, dan `matchMedia.revert()`. Perubahan ukuran konten, tab/filter, font, dan gambar menjadwalkan refresh pengukuran yang digabung dan menunggu scroll berhenti, bukan refresh setiap frame. Ini menjaga smooth scroll tetap berjalan saat formulir atau notifikasi mengubah tinggi halaman. Anchor memperhitungkan posisi asli section yang dipin.
 
 Pola lifecycle mengikuti dokumentasi resmi [GSAP React](https://github.com/greensock/react), [matchMedia](<https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/>), dan [ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/). Pemeriksaan proyek: `npm run build` dan `npm run format:check`.
 
