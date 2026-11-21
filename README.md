@@ -112,3 +112,13 @@ Edit `src/data/works.js` dan simpan gambar di `public/works/`. Setiap entri memi
 Gunakan gambar WebP terkompresi, misalnya `image: '/works/nama-proyek.webp'`. Gambar karya saat ini memakai kualitas 82 dengan dimensi asli dipertahankan; logo dan favicon memakai WebP lossless agar detail serta transparansinya tetap utuh. Untuk gambar karya baru, disarankan rasio 4:3 dengan ukuran 1600 × 1200 piksel. Ikon SVG tetap digunakan dalam format vektor.
 Kategori yang tersedia: Website, Design UI/UX, Design Graphic. Filter Semua menampilkan seluruh entri.
 Gambar referensi pengguna dipasang sebagai contoh berlabel `demo: true`; ganti dengan karya asli dan metadata yang benar sebelum digunakan sebagai portofolio nyata. Daftar kosong menampilkan pesan kosong, bukan kartu palsu. Gambar dibuka di dialog dengan tombol tutup, tombol Escape, dan pengembalian fokus.
+
+## Deployment Vercel
+
+`vercel.json` menetapkan framework Vite, instalasi `npm ci`, build `npm run build`, dan output `dist`. Import repository GitHub Krealance di dashboard Vercel dengan Root Directory pada folder yang berisi `package.json` dan `vercel.json`. Aplikasi saat ini tidak membutuhkan environment variable. Rute karya memakai hash `#/karya`, sehingga tidak membutuhkan rewrite semua URL ke `index.html`.
+
+Konfigurasi juga menambahkan CSP, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, dan `Permissions-Policy`. CSP membatasi skrip serta koneksi ke origin sendiri dan mencegah halaman ditampilkan dalam iframe. Inline style masih diizinkan untuk animasi GSAP serta style React; inline script dan `eval` tidak diizinkan. Jika nanti menambah analytics, embed, atau aset eksternal, sesuaikan CSP dan uji kembali. Toolbar pratinjau Vercel yang memuat skrip eksternal juga dapat dibatasi oleh kebijakan ini.
+
+Setelah deployment berhasil, tambahkan domain melalui Settings → Domains. Gunakan nilai DNS yang ditampilkan khusus untuk proyek tersebut; jangan menyalin IP atau CNAME proyek lain. Untuk domain utama gunakan A record dan untuk `www` gunakan CNAME sesuai petunjuk Vercel. Tambahkan keduanya dan pilih salah satu sebagai domain utama dengan redirect. Jika DNS tetap dikelola di penyedia domain, cukup ubah record website; pertahankan record email MX/TXT yang sudah ada. Periksa HTTPS serta header pada URL publik setelah domain tervalidasi.
+
+Panduan resmi: [Vite di Vercel](https://vercel.com/docs/frameworks/frontend/vite), [konfigurasi proyek](https://vercel.com/docs/project-configuration/vercel-json), dan [domain khusus](https://vercel.com/docs/domains/working-with-domains/add-a-domain).
