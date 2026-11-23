@@ -35,7 +35,7 @@ export default function Hero({ menuOpen, setMenuOpen }) {
             </div>
             <div className="mock-nav">
               <b>
-                <img className="mock-logo" src="/favicon.webp" alt="" width="20" height="20" />
+                <img className="mock-logo" src="/Krealance.webp" alt="" width="20" height="20" />
                 {'krealance'}
               </b>
               <span className="mock-link">{'Rancang Bangun Luncurkan ↗'}</span>

@@ -109,9 +109,15 @@ Pola lifecycle mengikuti dokumentasi resmi [GSAP React](https://github.com/green
 Beranda menampilkan maksimal tiga kartu untuk kategori yang dipilih. Jika jumlah seluruh karya lebih dari tiga, tombol "Lihat Semua Karya" membuka halaman `#/karya`. Halaman tersebut menampilkan seluruh data karya dengan filter kategori dan dialog gambar yang sama, tanpa navbar. Tombol "Kembali" menggunakan riwayat navigasi aplikasi, atau kembali ke bagian Karya di beranda jika halaman dibuka langsung. Rute menggunakan hash sehingga tidak memerlukan library router tambahan atau aturan rewrite pada hosting statis. Implementasi halaman berada di `src/pages/WorksPage.jsx`; `Portfolio.jsx` dipakai bersama dalam mode pratinjau dan penuh.
 
 Edit `src/data/works.js` dan simpan gambar di `public/works/`. Setiap entri memiliki id, title, category, image, alt, description, tags, demo, dan url opsional.
-Gunakan gambar WebP terkompresi, misalnya `image: '/works/nama-proyek.webp'`. Gambar karya saat ini memakai kualitas 82 dengan dimensi asli dipertahankan; logo dan favicon memakai WebP lossless agar detail serta transparansinya tetap utuh. Untuk gambar karya baru, disarankan rasio 4:3 dengan ukuran 1600 × 1200 piksel. Ikon SVG tetap digunakan dalam format vektor.
+Gunakan gambar WebP terkompresi, misalnya `image: '/works/nama-proyek.webp'`. Gambar karya saat ini memakai kualitas 82 dengan dimensi asli dipertahankan. Logo pada ilustrasi beranda dan favicon memakai aset yang sama, `public/Krealance.webp`, dengan kompresi lossless agar detail serta transparansinya tetap utuh. Untuk gambar karya baru, disarankan rasio 4:3 dengan ukuran 1600 × 1200 piksel. Ikon SVG tetap digunakan dalam format vektor.
 Kategori yang tersedia: Website, Design UI/UX, Design Graphic. Filter Semua menampilkan seluruh entri.
 Gambar referensi pengguna dipasang sebagai contoh berlabel `demo: true`; ganti dengan karya asli dan metadata yang benar sebelum digunakan sebagai portofolio nyata. Daftar kosong menampilkan pesan kosong, bukan kartu palsu. Gambar dibuka di dialog dengan tombol tutup, tombol Escape, dan pengembalian fokus.
+
+## Pratinjau tautan
+
+`index.html` memuat metadata Open Graph dan Twitter Card secara statis agar crawler dapat membacanya tanpa menjalankan React. Gambar yang digunakan adalah `public/og-krealance-v1.webp` (1200 × 630 piksel), dengan URL absolut `https://krealance.my.id/og-krealance-v1.webp`. Metadata juga menyertakan judul, deskripsi, teks alternatif, dan URL canonical.
+
+Sumber desain yang dapat diedit berada di `references/Krealance_OG_Image.html`. Render pada viewport 1200 × 630 dengan skala 1, lalu ekspor ke WebP terkompresi. Gambar hasil ekspor sudah disimpan dalam proyek; build tidak membutuhkan renderer tambahan. Jika mengganti desain setelah publikasi, gunakan nama versi baru dan perbarui `og:image` serta `twitter:image` di `index.html`. Pratinjau pada aplikasi berbagi dapat tersimpan di cache dan pemotongannya mengikuti aplikasi tersebut.
 
 ## Deployment Vercel
 
